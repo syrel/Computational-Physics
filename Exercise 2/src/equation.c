@@ -6,7 +6,6 @@
 #include <stdio.h>
 
 #include "equation.h"
-#include "results.h"
 #include "input.h"
 
 #define INPUT_LENGTH 16
