@@ -4,76 +4,12 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include <errno.h>
 
 #include "equation.h"
 #include "results.h"
-
+#include "input.h"
 
 #define INPUT_LENGTH 16
-#define STR_HELPER(x) #x
-#define STR(x) STR_HELPER(x)
-
-/**
- * Query a number argument at a given index and store it at retArg address
- * @param arguments a list of arguments
- * @param index an index of a wanted number
- * @param retArg a pointer to returned number
- * @return
- *      RESULT_OK if argument at an index is an integer number
- *      ERROR_NOT_INTEGER if an argument at an index is not a valid number
- */
-result to_number(const char *input, float *retArg) {
-    char* endPtr;
-    float number;
-    errno = 0;
-
-    number = strtof(input, &endPtr);
-
-    // strtof allows us to handle string => float conversion errors.
-    // check for possible errors and return ERROR_NOT_NUMBER if it is a case
-    if (endPtr == input || *endPtr != '\0' || errno == ERANGE) {
-        return ERROR_NOT_NUMBER;
-    }
-
-    *retArg = number;
-
-    return RESULT_OK;
-}
-
-
-result ask_equation(Equation * anEquation) {
-    char * inputParameterA = malloc(INPUT_LENGTH * sizeof(char));
-    char * inputParameterB = malloc(INPUT_LENGTH * sizeof(char));
-    float parameterA = 0.f;
-    float parameterB = 0.f;
-
-
-    result rv = RESULT_ERROR;
-    while (FAILED(rv)) {
-        printf("Enter parameter a:\n");
-        scanf("%" STR(INPUT_LENGTH) "s", inputParameterA);
-        rv = to_number(inputParameterA, &parameterA);
-        if (FAILED(rv)) {
-            printf("Wrong input, try again\n");
-        }
-    }
-
-    rv = RESULT_ERROR;
-    while (FAILED(rv)) {
-        printf("Enter parameter b:\n");
-        scanf("%" STR(INPUT_LENGTH) "s", inputParameterB);
-        rv = to_number(inputParameterB, &parameterB);
-        if (FAILED(rv)) {
-            printf("Wrong input, try again\n");
-        }
-    }
-
-    anEquation->a = parameterA;
-    anEquation->b = parameterB;
-
-    return RESULT_OK;
-}
 
 result solve_equation(Equation * anEquation) {
     if (anEquation->a == 0) {
@@ -88,9 +24,15 @@ result solve_equation(Equation * anEquation) {
 int main() {
     Equation anEquation;
 
-    result rv = ask_equation(&anEquation);
+    result rv = ask_float("Enter parameter a:", INPUT_LENGTH, &anEquation.a);
     if (FAILED(rv)) {
-        printf("Error(%d) while setting equation\n", rv);
+        printf("Error(%d) while reading parameter a\n", rv);
+        exit(rv);
+    }
+
+    rv = ask_float("Enter parameter b:", INPUT_LENGTH, &anEquation.b);
+    if (FAILED(rv)) {
+        printf("Error(%d) while reading parameter b\n", rv);
         exit(rv);
     }
 
