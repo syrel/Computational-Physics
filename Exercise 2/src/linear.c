@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "equation.h"
+#include "linear.h"
 #include "input.h"
 
 #define INPUT_LENGTH 16
