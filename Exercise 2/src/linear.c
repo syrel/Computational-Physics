@@ -16,7 +16,6 @@ result solve_equation(Equation * anEquation) {
     }
 
     anEquation->x = -anEquation->b / anEquation->a;
-
     return RESULT_OK;
 }
 
