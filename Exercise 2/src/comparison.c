@@ -11,18 +11,19 @@
 
 #define INPUT_LENGTH 16
 
-float cosinus(float degrees) {
-    return (float) cos(degrees);
+
+float cosinus(float degree) {
+    return (float) cos(degree);
 }
 
-/**
- * 1 - x^2/2 + x^4/24
- * @param argument - value of x argument
- * @return result of computation
- */
 float polynom(float argument) {
     return (float) (1 - pow(argument,2) + pow(argument,4) / 24);
 }
+
+/*
+ * Q: compare the results for different values of x. Are they similar?
+ * A: results are similar for x close to 0. Probably given polynom is a Taylor series of a cos function
+ */
 
 int main() {
 
