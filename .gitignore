@@ -4,6 +4,9 @@
 # Do no commit binaries
 *.o
 
+# Ignore CLion stuff
+*.cbp
+
 # Ignore binaries
 bin/
 
@@ -13,4 +16,4 @@ bin/
 **/CMakeCache.txt
 **/CMakeFiles/
 **/Makefile
-**/_*
+_*

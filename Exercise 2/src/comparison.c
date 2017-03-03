@@ -11,7 +11,6 @@
 
 #define INPUT_LENGTH 16
 
-
 float cosinus(float degree) {
     return (float) cos(degree);
 }
