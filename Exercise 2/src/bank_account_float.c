@@ -7,13 +7,10 @@
  * This happens because of float point number precision.
  *
  * A possible solution would be to use double point precision
- *
  */
 
 int main()
 {
-
-
     //We define the variables
     double balance = 0; 			//initial balance (to be read from user)
     double increase = 0;			//increase (to be read from user)
@@ -30,7 +27,6 @@ int main()
     newbalance = balance + increase; //calculating the nes balance
 
     printf("Account balance (Francs): %.2lf\n", newbalance); //printing the result
-
 
     return 0;
 }

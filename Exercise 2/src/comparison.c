@@ -11,11 +11,11 @@
 
 #define INPUT_LENGTH 16
 
-float cosinus(float degree) {
+float cosine(float degree) {
     return (float) cos(degree);
 }
 
-float polynom(float argument) {
+float polynomial(float argument) {
     return (float) (1 - pow(argument,2) + pow(argument,4) / 24);
 }
 
@@ -34,8 +34,8 @@ int main() {
         exit(rv);
     }
 
-    float cosResult = cosinus(argument);
-    float polResult = polynom(argument);
+    float cosResult = cosine(argument);
+    float polResult = polynomial(argument);
 
     printf("cos(%f) = %f\n", argument, cosResult);
     printf("1 - x^2/2 + x^4/24 = %f\n", polResult);
