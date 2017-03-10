@@ -109,7 +109,8 @@ Will print the the date, formatting it to XX.XX.XXXX.
 
 
 Exercise 3.5:
-Write a programm in which the user can input 2 numbers. The first number is the number that is repeated, and the second number how many times it is repeated. Example: f(9,8) => 99999999. (It doesn't have to work for the number 0 as first parameter, though.)
+Write a programm in which the user can input 2 numbers. The first number is the number that is repeated,
+and the second number how many times it is repeated. Example: f(9,8) => 99999999. (It doesn't have to work for the number 0 as first parameter, though.)
 
 - This problem can be solved without loops. Try to find a mathematical way to do this.
 
