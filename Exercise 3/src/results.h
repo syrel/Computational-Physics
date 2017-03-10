@@ -13,6 +13,7 @@
 #define ERROR_NOT_NUMBER 3 << 1
 #define ERROR_OUT_OF_BOUNDS 4 << 1
 #define ERROR_ZERO_DIVISION 5 << 1
+#define ERROR_UNSOLVABLE 6 << 1
 
 #define FAILED(x) x != RESULT_OK
 #define SUCCEED(x) x == RESULT_OK
