@@ -5,7 +5,7 @@
 #include <math.h>
 #include <stdio.h>
 
-#include "stone.h"
+#include "ball.h"
 #include "equation.h"
 #include "input.h"
 
@@ -16,7 +16,7 @@
 float heightAt (Stone* stone, float time) {
     float drop = dropTime(stone);
     time = fminf(time, drop);
-    return (stone->y0) + ((stone->v) * time * sinf(stone->alpha)) - ((stone->g) * powf(time, 2) / 2.0f);
+    return (stone->y0) + ((stone->v) * time * sinf(stone->alpha)) - ((stone->g) * powf(time, 2) / 2.0);
 }
 
 // x = x0 + v*t*cos(alpha)
@@ -27,11 +27,11 @@ float distanceAt (Stone* stone, float time) {
 }
 
 // g*t^2/2 - v*sin(alpha)*t - y0 = 0
-float dropTime (Stone* stone) {
+float dropTime (Ball* ball) {
     Equation equation;
-    equation.a = stone->g / 2.0f;
-    equation.b = -1 * stone->v * sinf(stone->alpha);
-    equation.c = -1 * stone->y0;
+    equation.a = ball->g / 2.0f;
+    equation.b = -1 * ball->v * sinf(ball->alpha);
+    equation.c = -1 * ball->y0;
     result rv = solve(&equation);
     if (FAILED(rv)) {
         printf("Error(%d): was unable to find drop time\n", rv);
@@ -41,7 +41,7 @@ float dropTime (Stone* stone) {
 }
 
 inline float toRadians(float degrees) {
-    return (float) (degrees / (180.0f / M_PI));
+    return (float) (degrees / (180.0 / M_PI));
 }
 
 int main() {
